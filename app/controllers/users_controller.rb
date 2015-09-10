@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
-      render :js => "window.location = '/main/admin'"
+      render :js => "window.location = '/admin/index'"
   	else
       render 'new'
     end
