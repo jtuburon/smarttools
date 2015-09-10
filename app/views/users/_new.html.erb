@@ -29,8 +29,12 @@
   </p>
 
   <p>
-    <%= f.label 'Contraseña' %><br>
-    <%= f.text_field :password %>
+    <%= f.label "Contraseña" %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label "Confirmar Contraseña" %><br />
+    <%= f.password_field :password_confirmation %>
   </p>
  
   <p>

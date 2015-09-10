@@ -3,4 +3,8 @@ class MainController < ApplicationController
   def index
     @user = User.new
   end
+
+  def admin
+    
+  end
 end
