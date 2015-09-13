@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Listado de concursos</h1>
+    </div>
+</div>
+            
+<!-- /.row -->
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= link_to new_competition_path(), remote: true do %>
+            <button type="button" class="btn btn-warning">Nuevo Concurso</button>
+          <% end %>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div id="competitions"><%= render 'competitions/list' %></div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+</div>
+<div class="modal fade" id="competition_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div id="competition-modal-content" class="modal-content">
+      <%= render 'competitions/new', modal: true %>
+    </div>
+  </div>
+</div>
+
+
+
