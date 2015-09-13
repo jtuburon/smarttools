@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 		if params[:commit] == 'Iniciar'
 			registered_user = User.find_by(email: params[:user][:email].downcase)
 			if registered_user && User.authenticate(params[:user][:email], params[:user][:password])
+				session[:user_id] = registered_user.id
 				render :js => "window.location = '/admin/index'"
 			else
 				@user.errors.add(:password, "Invalid email/password combination")
