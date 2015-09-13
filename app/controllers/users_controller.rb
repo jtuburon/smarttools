@@ -20,8 +20,8 @@ class UsersController < ApplicationController
 			if registered_user && User.authenticate(params[:user][:email], params[:user][:password])
 				render :js => "window.location = '/admin/index'"
 			else
-				@user.errors.add(:email, "Invalid email/password combination")
-				render 'new'
+				@user.errors.add(:password, "Invalid email/password combination")
+				render 'login'
 			end
 		else
 			@user = User.new(user_params)
