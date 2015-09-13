@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913203615) do
+ActiveRecord::Schema.define(version: 20150913223134) do
 
   create_table "competitions", force: :cascade do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150913203615) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "uri"
+    t.string   "image"
   end
 
   create_table "users", force: :cascade do |t|
