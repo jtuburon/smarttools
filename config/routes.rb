@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'main#index'
-  get 'main/index'  => 'main#index'
-  get 'admin/index'  => 'admin#index'
+  get 'main/index'  =>  'main#index'
+  get 'admin/index' =>  'admin#index'
+  get 'admin/logout' =>  'admin#logout'
   resources :users
   resources :admin
   resources :competitions
