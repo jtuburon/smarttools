@@ -1,10 +1,10 @@
 <%= form_for :user, url: users_path, remote: true do |f|   %>
 	<% if @user.errors.any? %>
 		<div id="error_explanation">
-			<h2>
+			<h3>
 				<%= pluralize(@user.errors.count, "error") %> prohibited
-				this user from being saved:
-			</h2>
+				this user to login:
+			</h3>
 			<ul>
 				<% @user.errors.full_messages.each do |msg| %>
 					<li><%= msg %></li>
