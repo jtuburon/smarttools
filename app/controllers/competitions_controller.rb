@@ -32,7 +32,7 @@ class CompetitionsController < ApplicationController
 	end
 
 	def destroy
-	@competition.destroy
+		@competition.destroy
 	end
 
 		private

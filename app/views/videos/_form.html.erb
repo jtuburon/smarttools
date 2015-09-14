@@ -1,0 +1,37 @@
+<%= form_for @video,  remote: true, :html => {:multipart => true, :format => :js} do |f|   %>
+  <% if @video.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@video.errors.count, "error") %> prohibited
+        this article f rom being saved:
+      </h2>
+      <ul>
+        <% @video.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p> 
+
+  <p>
+    <%= f.label :user_name %><br>
+    <%= f.text_field :user_name %>
+  </p> 
+  <p>
+    <%= f.label :user_lastname %><br>
+    <%= f.text_field :user_lastname %>
+  </p> 
+  <p>
+    <%= f.label :user_email %><br>
+    <%= f.text_field :user_email %>
+  </p>
+  <%= f.hidden_field :competition_id %> 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

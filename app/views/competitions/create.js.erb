@@ -1,2 +1,2 @@
-$('#competitions').html("<%= j(render 'list') %>");
+$('#competitions').html("<%= j(render 'list', locals: {id: 77} ) %>");
 $('#competition_modal').modal('hide');

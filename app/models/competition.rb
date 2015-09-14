@@ -6,4 +6,5 @@ class Competition < ActiveRecord::Base
 	validates :uri, presence: true
 	validates_uniqueness_of :uri
 	mount_uploader :image, ImageUploader
+	has_many :videos
 end
