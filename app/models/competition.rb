@@ -5,4 +5,5 @@ class Competition < ActiveRecord::Base
 	validates :end_date, presence: true
 	validates :uri, presence: true
 	validates_uniqueness_of :uri
+	mount_uploader :image, ImageUploader
 end
