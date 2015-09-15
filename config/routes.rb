@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   get 'main/index'  =>  'main#index'
   get 'admin/index' =>  'admin#index'
   get 'admin/logout' =>  'admin#logout'
+  get "competitions/:id/videos/" => "videos#index"
+
   resources :users
-  
+  resources :admin
+  resources :competitions
+  resources :videos, :except => :index
+   
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
