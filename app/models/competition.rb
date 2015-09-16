@@ -7,4 +7,5 @@ class Competition < ActiveRecord::Base
 	validates_uniqueness_of :uri
 	mount_uploader :image, ImageUploader
 	has_many :videos
+	belongs_to :user
 end

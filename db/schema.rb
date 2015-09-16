@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914163909) do
+ActiveRecord::Schema.define(version: 20150916151901) do
 
   create_table "competitions", force: :cascade do |t|
     t.string   "title"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(version: 20150914163909) do
     t.date     "end_date"
     t.string   "uri"
     t.string   "image"
+    t.integer  "user_id"
   end
+
+  add_index "competitions", ["user_id"], name: "index_competitions_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150914163909) do
   end
 
   create_table "videos", force: :cascade do |t|
-    t.string   "name"
+    t.string   "message"
     t.string   "user_email"
     t.string   "user_name"
     t.string   "user_lastname"
@@ -43,6 +46,9 @@ ActiveRecord::Schema.define(version: 20150914163909) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "competition_id"
+    t.string   "o_video"
+    t.string   "c_video"
+    t.datetime "converted_at"
   end
 
   add_index "videos", ["competition_id"], name: "index_videos_on_competition_id"

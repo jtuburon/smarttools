@@ -20,7 +20,7 @@
                     <tbody>
                       <% @competitions.each do |competition| %>
                       <tr>
-                        <td><%= competition.title %></td>
+                        <td><%= link_to competition.title, competition_detail_path(competition), remote: true %></td>
                         <td><%= competition.description %></td>
                         <td><%= competition.start_date %></td>
                         <td><%= competition.end_date %></td>

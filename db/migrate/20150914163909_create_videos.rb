@@ -1,7 +1,7 @@
 class CreateVideos < ActiveRecord::Migration
   def change
     create_table :videos do |t|
-      t.string :name
+      t.string :message
       t.string :user_email
       t.string :user_name
       t.string :user_lastname

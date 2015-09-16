@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'main/index'  =>  'main#index'
   get 'admin/index' =>  'admin#index'
   get 'admin/logout' =>  'admin#logout'
-  get "competitions/:id/videos/" => "videos#index"
+  get "competitions/:id/videos/" => "videos#index", as: :competition_detail
 
   resources :users
   resources :admin

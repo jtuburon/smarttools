@@ -1,36 +1,35 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i>Videos de ...
+
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                 <th>Mensaje</th>
+                 <th>Nombre del usuario</th>
+                 <th>Apellidos</th>
+                 <th>Email</th>
+                 <th>Estado</th>
+                 <th>Fecha Subido:</th>           
+                 <th>Fecha Convertido:</th>           
+                 <th>Videos:</th>           
+                </tr>
+            </thead>
+            <tbody>
+              <% @videos.each do |video| %>
+              <tr>
+                <td><%= video.message %></td>
+                <td><%= video.user_name %></td>
+                <td><%= video.user_lastname %></td>
+                <td><%= video.user_email %></td>
+                <td><%= video.status %></td>
+                <td><%= video.created_at %></td>
+                <td><%= video.converted_at %></td>
+                <td>1 - 2</td>
+              </tr>
+            <% end %>
+            </tbody>
+        </table>
     </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-        <div class="row">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped">
-                    <thead>
-                        <tr>
-                         <th>Nombre</th>
-                         <th>Nombre del usuario</th>
-                         <th>Apellidos</th>
-                         <th>Email</th>
-                         <th>Estado</th>           
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <% @videos.each do |video| %>
-                      <tr>
-                        <td><%= video.name %></td>
-                        <td><%= video.user_name %></td>
-                        <td><%= video.user_lastname %></td>
-                        <td><%= video.user_email %></td>
-                        <td><%= video.status %></td>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.panel-body -->
+    <%= paginate @videos %>
 </div>
+<!-- /.row -->

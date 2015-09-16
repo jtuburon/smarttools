@@ -10,14 +10,17 @@ class CompetitionsController < ApplicationController
 
 	def show
 		@competition = Competition.find(params[:id])
-		end
+	end
 
 	def new
 		@competition = Competition.new
 	end
 	def create
+		user= current_user;
 		@competition = Competition.new(new_competition_params)
 		@competition.uri = SecureRandom.uuid	
+		@competition.user = user
+
 		if @competition.save
 			respond_to do |format|
 				format.js { }
@@ -45,8 +48,8 @@ class CompetitionsController < ApplicationController
 			end
 
 			def all_competitions
-	  			@competitions = Competition.all
-		end
+	  			@competitions = Competition.where(user: current_user)
+			end
 
 	def set_competition
 	  @competition = Competition.find(params[:id])
