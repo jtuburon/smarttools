@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :videos, :except => :index
   get "videos/preview/:id/:type" => "videos#preview", as: :video_preview   
 
+  get "sites/:uri" => "sites#index", as: :site_idex
+
+  resources :sites
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
