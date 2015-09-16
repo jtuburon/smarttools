@@ -30,6 +30,15 @@
     <%= f.label :user_email %><br>
     <%= f.text_field :user_email %>
   </p>
+  <p>
+    <%= f.file_field :o_video %>
+  </p>
+
+  <p>
+    <%= f.label :remote_o_video_url, "or video URL" %><br />
+    <%= f.text_field :remote_o_video_url %>
+  </p>
+
   <%= f.hidden_field :competition_id %> 
   <p>
     <%= f.submit %>

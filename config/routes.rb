@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :admin
   resources :competitions
   resources :videos, :except => :index
-   
+  get "videos/preview/:id/:type" => "videos#preview", as: :video_preview   
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

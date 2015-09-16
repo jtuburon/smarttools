@@ -24,7 +24,18 @@
                 <td><%= video.status %></td>
                 <td><%= video.created_at %></td>
                 <td><%= video.converted_at %></td>
-                <td>1 - 2</td>
+                <td>
+                    <%= link_to video_preview_path(video, 'O'), remote: true do %>
+                        <span class="glyphicon glyphicon-play" aria-hidden="true">Original</span>
+                    <% end %>
+                    <% if video.c_video %>
+                        <br/>
+                        <%= link_to '#' do %>
+                            <span class="glyphicon glyphicon-play" aria-hidden="true">Convertido</span>
+                        <% end %>                        
+                    <% end %>
+                    
+                </td>
               </tr>
             <% end %>
             </tbody>

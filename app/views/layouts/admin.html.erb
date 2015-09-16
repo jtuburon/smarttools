@@ -11,7 +11,8 @@
 	<title>Smarttools</title>
 	<%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<%= csrf_meta_tags %>
+	<%= csrf_meta_tags %>	
+	<%= jwplayer_assets %>
 </head>
 
 <body id="page-top" class="index">
@@ -32,7 +33,9 @@
 							<li class="sidebar-search">
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-dashboard fa-fw"></i>Concursos</a>
+								<%= link_to competitions_path(), remote: true do %>
+                        			<i class="fa fa-dashboard fa-fw"></i>Concursos
+                    			<% end %>								
 							</li>
 							<li>
 								<a href="logout"><i class="fa fa-table fa-fw"></i>Logout</a>

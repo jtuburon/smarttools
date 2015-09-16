@@ -4,10 +4,15 @@ class VideosController < ApplicationController
   	before_action :set_video, only: [:edit, :update, :destroy]
 
  	def index
-		@video = Video.new
-		@competition= Competition.find(params[:id])
-		@video.competition= @competition
-		all_videos_in_competition(params[:id])
+ 		if !session[:user_id]
+			redirect_to root_path
+		else
+			@video = Video.new
+			@competition= Competition.find(params[:id])
+			@video.competition= @competition
+			all_videos_in_competition(params[:id])
+		end
+		
 	end
 
 	def show
@@ -32,6 +37,15 @@ class VideosController < ApplicationController
 		end
 	end
 
+	def preview
+		@video = Video.find(params[:id])
+		if params[:type]== 'O'
+			@video_url = @video.o_video.url
+		else
+			@video_url = @video.c_video
+		end
+	end
+
 	def update
 		@video.update_attributes(video_params)
 	end
@@ -42,7 +56,7 @@ class VideosController < ApplicationController
 
 		private
 			def video_params
-				params.require(:video).permit(:message, :user_name, :user_lastname, :user_email, :competition_id)
+				params.require(:video).permit(:message, :user_name, :user_lastname, :user_email, :competition_id, :o_video, :remote_o_video_url)
 			end
 	  			
 			def all_videos_in_competition(id)

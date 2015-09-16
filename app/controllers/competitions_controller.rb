@@ -5,7 +5,11 @@ class CompetitionsController < ApplicationController
   	before_action :set_competition, only: [:edit, :update, :destroy]
 
 	def index
-		@competition = Competition.new
+		if !session[:user_id]
+			redirect_to root_path
+		else
+			@competition = Competition.new
+		end
 	end
 
 	def show

@@ -27,6 +27,8 @@ gem "bcrypt"
 gem 'remotipart', '~> 1.2'
 gem "carrierwave"
 gem "will_paginate"
+#gem 'jwplayer-rails'
+gem 'jwplayer-rails', :git => 'git://github.com/dutgriff/jwplayer-rails.git'
 
 
 gem 'bootstrap-sass', '~> 3.2.0'
