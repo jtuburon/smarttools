@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Concurso: <%= @competition.title %></h1>
+    </div>
+</div>
+            
+<!-- /.row -->
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= link_to new_video_path(:competition => @competition.id), remote: true do %>
+            <button type="button" class="btn btn-warning">Nuevo Video</button>
+          <% end %>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i>Listado de Videos
+            </div>
+            
+            <div class="panel-body" id="videos"><%= render 'videos/list' %></div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+</div>
+<div class="modal fade" id="video_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div id="video-modal-content" class="modal-content">
+      <%= render 'videos/new', modal: true, opt: 'new' %>
+    </div>
+  </div>
+</div>
+
+
+
