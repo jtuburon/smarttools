@@ -8,21 +8,13 @@
 <!-- /.row -->
 <div class="row">
     <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= link_to new_video_path(:competition => @competition.id), remote: true do %>
-            <button type="button" class="btn btn-warning">Nuevo Video</button>
-          <% end %>
-        </div>
         <!-- /.panel-heading -->
-        <div class="panel-body">
-          <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-bar-chart-o fa-fw"></i>Listado de Videos
             </div>
             
             <div class="panel-body" id="videos"><%= render 'videos/list' %></div>
-        </div>
-        <!-- /.panel-body -->
+        
     </div>
 </div>
 <div class="modal fade" id="video_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

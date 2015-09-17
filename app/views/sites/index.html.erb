@@ -2,7 +2,9 @@
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
-        
+        <%= link_to new_video_path(:competition => @competition.id), remote: true do %>
+            <button type="button" class="btn btn-warning">Nuevo Video</button>
+        <% end %>
     </div>
     <!-- /.container -->
 </nav>
@@ -30,31 +32,8 @@
                             <i class="fa fa-clock-o fa-fw"></i> Listado de Videos
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <ul class="timeline">
-                                <% @videos.each_with_index do |video, index| %>
-                                    <% if index%2==0 %>
-                                        <li>
-                                    <% else %>
-                                        <li class="timeline-inverted">
-                                    <% end %>
-                                    
-                                        <div class="timeline-badge info"><i class="fa fa-save"></i>
-                                        </div>
-                                        <div class="timeline-panel">
-                                            <div class="timeline-heading">
-                                                <h4 class="timeline-title"> <%= video.message %></h4>
-                                            </div>
-                                            <div class="timeline-body">
-                                                <p><%= video.user_name+ " " +  video.user_lastname%></p>
-                                                <br/> 
-                                                
-                                                <%= jwplayer({id: video.id, width: 450, height: 350, file: video.o_video.url, primary: "flash"}) %>
-                                            </div>
-                                        </div>
-                                    </li>
-                                <% end %>
-                            </ul>
+                        <div class="panel-body" id="videos">
+                            <%= render 'videos/timeline' %>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -72,4 +51,33 @@
         </div>
     </div>
 </footer>
-
+<div style="" class="modal fade" id="video_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div id="video-modal-content" class="modal-content">
+      <%= render 'videos/new', modal: true, opt: 'new' %>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="success_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div id="success-modal-content" class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Envio exitoso.</h4>
+        </div>
+        <div class="modal-body">
+          <div id="video-form">
+                <p>
+                Su video ha sido recibido exitosamente. 
+                </p>
+                <p>
+              Pronto, Le enviaremos un e-mail cuando haya sido publicado en el sitio del concuros.
+                </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>

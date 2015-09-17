@@ -8,16 +8,15 @@ Rails.application.routes.draw do
   get 'admin/index' =>  'admin#index'
   get 'admin/logout' =>  'admin#logout'
   get "competitions/:id/videos/" => "videos#index", as: :competition_detail
-
+  
   resources :users
   resources :admin
   resources :competitions
   resources :videos, :except => :index
   get "videos/preview/:id/:type" => "videos#preview", as: :video_preview   
 
-  get "sites/:uri" => "sites#index", as: :site_idex
+  get "sites/:uri" => "sites#index", as: :site_index
 
-  resources :sites
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

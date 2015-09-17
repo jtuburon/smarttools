@@ -1,9 +1,14 @@
 class SitesController < ApplicationController
+	include VideosHelper
 	def index
 		@competition = Competition.find_by_uri(params[:uri])
 		if @competition	!= nil			
-			#@videos= Video.where(["competition_id = ? and converted_at IS NOT NULL", @competition]);
-			@videos= Video.where(competition: @competition);
+			@video = Video.new			
+			all_converted_videos_in_competition(@competition)
+			respond_to do |format|
+				format.html
+				format.js
+  			end			
 		end 
 	end
 end
