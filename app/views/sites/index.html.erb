@@ -49,8 +49,7 @@
                                                 <p><%= video.user_name+ " " +  video.user_lastname%></p>
                                                 <br/> 
                                                 
-                                                <div id="<%= video.id%>"></div>
-                                                <%= jwplayer({id: video.id, width: 450, height: 350, file: video.o_video.url}) %>
+                                                <%= jwplayer({id: video.id, width: 450, height: 350, file: video.o_video.url, primary: "flash"}) %>
                                             </div>
                                         </div>
                                     </li>
