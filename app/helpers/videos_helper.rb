@@ -13,12 +13,13 @@ module VideosHelper
 			c_folder= Rails.root.join("public", "uploads", "#{video.class.to_s.underscore}", "#{video.id}", "c_video")
 			Dir.mkdir(c_folder) unless File.exists?(c_folder)
 			c_filename= Rails.root.join("public", "uploads", "#{video.class.to_s.underscore}", "#{video.id}", "c_video", b_name)
-			movie.transcode(c_filename, "-acodec aac -vcodec libx264 -profile:v high -strict -2")
+			#movie.transcode(c_filename, "-acodec aac -vcodec libx264 -profile:v high -strict -2")
 			c_video= "/uploads/#{video.class.to_s.underscore}/#{video.id}/c_video/" +b_name
 			video.c_video = c_video
 			video.converted_at = DateTime.now
 			video.status = 1
 			video.save()
+			CustomMailer.converted_video_email(video).deliver
 		end
 	end
 end

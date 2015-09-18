@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @video.user_name%> <%= @video.user_lastname%></h1>
+    <p>
+      Tu video ha sido recibido y convertido exitosamente.
+    </p>
+    <p>
+      Se encuentra publicado en la página del sitio:
+      <%= link_to @video.competition.title, site_index_url(@video.competition.uri)%>
+    </p>
+  </body>
+</html>
