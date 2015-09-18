@@ -1,24 +1,3 @@
-<ul class="timeline">
-    <% @videos.each_with_index do |video, index| %>
-        <% if index%2==0 %>
-            <li>
-        <% else %>
-            <li class="timeline-inverted">
-        <% end %>
-        
-            <div class="timeline-badge info"><i class="fa fa-save"></i>
-            </div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title"> <%= video.message %></h4>
-                </div>
-                <div class="timeline-body">
-                    <p><%= video.user_name+ " " +  video.user_lastname%></p>
-                    <br/> 
-                    
-                    <%= jwplayer({id: video.id, width: 450, height: 350, file: video.o_video.url, primary: "flash"}) %>
-                </div>
-            </div>
-        </li>
-    <% end %>
-</ul>
+ <div class="panel-body" id="videos">
+ 	<%= render 'videos/timeline_list' %>
+ </div>

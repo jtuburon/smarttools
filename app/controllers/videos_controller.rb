@@ -15,6 +15,17 @@ class VideosController < ApplicationController
 		end		
 	end
 
+ 	def timeline
+ 		if !session[:user_id]
+			redirect_to root_path
+		else
+			@video = Video.new
+			@competition= Competition.find_by_uri(params[:uri])
+			@video.competition= @competition
+			all_converted_videos_in_competition(@competition)
+		end		
+	end
+
 	def new
 		@video = Video.new
 		@competition= Competition.find(params[:competition])
@@ -24,6 +35,7 @@ class VideosController < ApplicationController
 	def create
 		@video = Video.new(video_params)		
 		if @video.save
+			@competition= Competition.find(@video.competition_id)
 			all_converted_videos_in_competition(@video.competition_id)			
 			respond_to do |format|
 				format.js {render "videos/create.js", :locals => {:id => @video.competition_id} }

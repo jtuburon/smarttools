@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'admin/index' =>  'admin#index'
   get 'admin/logout' =>  'admin#logout'
   get "competitions/:id/videos/" => "videos#index", as: :competition_detail
+  get "competitions/:uri/timeline/" => "videos#timeline", as: :competition_timeline
   
   resources :users
   resources :admin
