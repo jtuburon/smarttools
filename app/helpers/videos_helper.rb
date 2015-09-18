@@ -17,6 +17,7 @@ module VideosHelper
 			c_video= "/uploads/#{video.class.to_s.underscore}/#{video.id}/c_video/" +b_name
 			video.c_video = c_video
 			video.converted_at = DateTime.now
+			video.status = 1
 			video.save()
 		end
 	end
