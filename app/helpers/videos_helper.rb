@@ -3,7 +3,7 @@ module VideosHelper
 		@videos= Video.where(["competition_id = ? and converted_at IS NOT NULL", @competition]).order('created_at DESC').paginate(:page => params[:page], :per_page => 2);
 	end
 
-	def self.convert_pending_videos
+	def self.convert_pending_videos  
 		pending_videos = Video.where('c_video is NULL');
 		pending_videos.each do |video|
 			movie = FFMPEG::Movie.new(video.o_video.path)			
@@ -19,7 +19,7 @@ module VideosHelper
 			video.converted_at = DateTime.now
 			video.status = 1
 			video.save()
-			CustomMailer.converted_video_email(video).deliver_later
+			CustomMailer.converted_video_email(video).deliver
 		end
 	end
 end
