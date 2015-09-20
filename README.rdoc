@@ -4,8 +4,10 @@ SmartTools es una aplicación web la cual permite que usuarios creen campañas p
 * ffmpeg como herramienta para el manejo de videos
 * Bootstrap como framework frontend
 * JW Player como herramienta para reproducción de videos
-* Whene* ver, gema para el manejo de cron
+* Whenever, gema para el manejo de cron
 * JMeter como aplicación para realizar pruebas de stress a la aplicación
+
+![SmartTools](https://cloud.githubusercontent.com/assets/2312513/9981678/5c1b0e50-5f89-11e5-9443-b2fe235388d0.png)
 
 == Instalación
 
