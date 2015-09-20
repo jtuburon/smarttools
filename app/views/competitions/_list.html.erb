@@ -1,47 +1,52 @@
 <div class="panel panel-default">
-    <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i>Concursos
-    </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-        <div class="row">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped">
-                    <thead>
-                        <tr>
-                         <th>Nombre</th>
-                         <th>Descripcion</th>
-                         <th>Fecha Inicio</th>
-                         <th>Fecha Final.</th>
-                         <th>URI</th>
-                          <th></th>                          
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <% @competitions.each do |competition| %>
-                      <tr>
-                        <td><%= link_to competition.title, competition_detail_path(competition), remote: true %></td>
-                        <td><%= competition.description %></td>
-                        <td><%= competition.start_date %></td>
-                        <td><%= competition.end_date %></td>
-                        <td><%= competition.uri %></td>
+	<div class="panel-heading">
+		<i class="fa fa-bar-chart-o fa-fw"></i>Mis concursos
+	</div>
+	<!-- /.panel-heading -->
 
-                         <td>
-                          <%= link_to edit_competition_path(competition), remote: true do %>
-                            <button type="button" class="btn btn-sm btn-warning">Edit</button>
-                          <% end %>
-                          <%= link_to competition, method: :delete, remote: true do %>
-                            <button type="button" class="btn btn-sm btn-danger">Remove</button>
-                          <% end %>
-                        </td>
-                        
-                      </tr>
-                    <% end %>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.panel-body -->
-</div>
+
+	<div class="panel-body">
+		<div class="row">
+			<% if @competitions.empty? %>
+				<p class="panel-body lead">Crea tus concursos en segundos con el botón de arriba!</p>
+			<% else %>
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover table-striped">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Descripción</th>
+								<th>Fecha Inicio</th>
+								<th>Fecha Final.</th>
+								<th>URI</th>
+								<th>Opciones</th
+								</tr>
+							</thead>
+							<tbody>
+								<% @competitions.each do |competition| %>
+								<tr>
+									<td><%= link_to competition.title, competition_detail_path(competition), remote: true %></td>
+									<td><%= competition.description %></td>
+									<td><%= competition.start_date %></td>
+									<td><%= competition.end_date %></td>
+									<td><%= competition.uri %></td>
+
+									<td>
+										<%= link_to edit_competition_path(competition), remote: true do %>
+										<button type="button" class="btn btn-sm btn-warning">Edit</button>
+										<% end %>
+										<%= link_to competition, method: :delete, remote: true do %>
+										<button type="button" class="btn btn-sm btn-danger">Remove</button>
+										<% end %>
+									</td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				<% end %>
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.panel-body -->
+	</div>
