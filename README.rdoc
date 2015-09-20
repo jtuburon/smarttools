@@ -9,12 +9,10 @@ SmartTools es una aplicación web la cual permite que usuarios creen campañas p
 
 == Instalación
 
-Por seguridad al momento de realizar el despliegue es necesario crear el archivo `/config/app_environment_variables.rb` el cual contiene las credenciales para el envío de correos, a continuación se presenta un ejemplo.
+Por seguridad al momento de realizar el despliegue es necesario crear el archivo +/config/app_environment_variables.rb+ el cual contiene las credenciales para el envío de correos, a continuación se presenta un ejemplo.
 
-```bash
-ENV['gmail_username'] = "user@domain.com"
-ENV['gmail_password'] = "p4ssw0rd"
-```
+  ENV['gmail_username'] = "user@domain.com"
+  ENV['gmail_password'] = "p4ssw0rd"
 
 == Funcionalidades de SmartTools
 
