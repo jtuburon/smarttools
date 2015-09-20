@@ -1,25 +1,29 @@
-<ul class="timeline">
-    <% @videos.each_with_index do |video, index| %>
-        <% if index%2==0 %>
-            <li>
-        <% else %>
-            <li class="timeline-inverted">
-        <% end %>
-        
-            <div class="timeline-badge info"><i class="fa fa-save"></i>
-            </div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title"> <%= video.message %></h4>
-                </div>
-                <div class="timeline-body">
-                    <p><%= video.user_name+ " " +  video.user_lastname%></p>
-                    <br/> 
-                    
-                    <%= jwplayer({id: video.id, width: 450, height: 350, file: video.c_video, primary: "flash"}) %>
-                </div>
-            </div>
-        </li>
-    <% end %>
-    <%= paginate @videos, :params => {:controller => 'videos', :action=>'timeline', :uri=> @competition.uri} %>
-</ul>
+<% if @videos.empty? %>
+	<p class="panel-body lead">Todavía no hay videos en este concurso, sé el primero oprimiendo click en Nuevo Video!</p>
+<% else %>
+	<ul class="timeline">
+		<% @videos.each_with_index do |video, index| %>
+			<% if index%2==0 %>
+				<li>
+			<% else %>
+				<li class="timeline-inverted">
+			<% end %>
+			
+				<div class="timeline-badge info"><i class="fa fa-save"></i>
+				</div>
+				<div class="timeline-panel">
+					<div class="timeline-heading">
+						<h4 class="timeline-title"> <%= video.message %></h4>
+					</div>
+					<div class="timeline-body">
+						<p><%= video.user_name+ " " +  video.user_lastname%></p>
+						<br/> 
+						
+						<%= jwplayer({id: video.id, width: 450, height: 350, file: video.c_video, primary: "flash"}) %>
+					</div>
+				</div>
+			</li>
+		<% end %>
+		<%= paginate @videos, :params => {:controller => 'videos', :action=>'timeline', :uri=> @competition.uri} %>
+	</ul>
+<% end %>
