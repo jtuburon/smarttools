@@ -9,36 +9,38 @@ SmartTools es una aplicación web la cual permite que usuarios creen campañas p
 
 ![SmartTools](https://cloud.githubusercontent.com/assets/2312513/9981678/5c1b0e50-5f89-11e5-9443-b2fe235388d0.png)
 
-== Instalación
+# Instalación
 
-Por seguridad al momento de realizar el despliegue es necesario crear el archivo +/config/app_environment_variables.rb+ el cual contiene las credenciales para el envío de correos, a continuación se presenta un ejemplo.
+Por seguridad al momento de realizar el despliegue es necesario crear el archivo `/config/app_environment_variables.rb` el cual contiene las credenciales para el envío de correos, a continuación se presenta un ejemplo.
 
-  ENV['gmail_username'] = "user@domain.com"
-  ENV['gmail_password'] = "p4ssw0rd"
+```ruby
+ENV['gmail_username'] = "user@domain.com"
+ENV['gmail_password'] = "p4ssw0rd"
+```
 
-== Funcionalidades de SmartTools
+# Funcionalidades de SmartTools
 
 Estas son las funcionalidades principales de la aplicación.
 
-=== HomePage del Servicio
+## HomePage del Servicio
 
 * Info General de servicio de cloud
 * Registarse como administrador de una empresa 
 * Iniciar sesión
 
-=== HomePage de Empresa o Usuario Administrador
+## HomePage de Empresa o Usuario Administrador
 
 * Administracion de los concursos o campañas (UUID)
   * CRUD de concurso
   * Listados de videos de un concurso.
   * Previsualizar los videos (original como el convertido)
 
-=== HomePage de los clientes (Usuarios que realizan los uploads)
+## HomePage de los clientes (Usuarios que realizan los uploads)
 
 * Visualización de los concursos de una empresa
 * Reproducir los videos de un concurso determinado
 * Subir un video a un concurso
 
-=== Batch Job
+## Batch Job
 
 * Utilizando whenever la aplicación realiza la conversión de videos que se encuentren pendientes
