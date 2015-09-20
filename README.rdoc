@@ -1,12 +1,30 @@
-SmartTools tendrá:
+SmartTools es una aplicación web la cual permite que usuarios creen campañas publicitarias por medio de videos para promocionar sus productos, a continuación se presentan las herramientas base de su despliegue:
 
-== WebApp
+* Ruby on Rails como framework de apliacción web
+* ffmpeg como herramienta para el manejo de videos
+* Bootstrap como framework frontend
+* JW Player como herramienta para reproducción de videos
+* Whene* ver, gema para el manejo de cron
+* JMeter como aplicación para realizar pruebas de stress a la aplicación
+
+== Instalación
+
+Por seguridad al momento de realizar el despliegue es necesario crear el archivo `/config/app_environment_variables.rb` el cual contiene las credenciales para el envío de correos, a continuación se presenta un ejemplo.
+
+```bash
+ENV['gmail_username'] = "user@domain.com"
+ENV['gmail_password'] = "p4ssw0rd"
+```
+
+== Funcionalidades de SmartTools
+
+Estas son las funcionalidades principales de la aplicación.
 
 === HomePage del Servicio
 
 * Info General de servicio de cloud
 * Registarse como administrador de una empresa 
-* Iniciar sesion
+* Iniciar sesión
 
 === HomePage de Empresa o Usuario Administrador
 
@@ -21,10 +39,6 @@ SmartTools tendrá:
 * Reproducir los videos de un concurso determinado
 * Subir un video a un concurso
 
-== Batch Job
+=== Batch Job
 
-== Herramientas a utilizar
-
-* PostgreSQL
-* RoR
-* bootstrap - sb-admin2
+* Utilizando whenever la aplicación realiza la conversión de videos que se encuentren pendientes
