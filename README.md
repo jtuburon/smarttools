@@ -16,6 +16,8 @@ Por seguridad al momento de realizar el despliegue es necesario crear el archivo
 ```ruby
 ENV['gmail_username'] = "user@domain.com"
 ENV['gmail_password'] = "p4ssw0rd"
+ENV['AWS_ACCESS_KEY_ID']="..."
+ENV['AWS_SECRET_ACCESS_KEY']="..."
 ```
 
 # Funcionalidades de SmartTools
