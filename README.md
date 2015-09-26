@@ -18,6 +18,10 @@ ENV['gmail_username'] = "user@domain.com"
 ENV['gmail_password'] = "p4ssw0rd"
 ENV['AWS_ACCESS_KEY_ID']="..."
 ENV['AWS_SECRET_ACCESS_KEY']="..."
+ENV['database_develop_port']='...'
+ENV['database_develop_host']='...'
+ENV['database_develop_user']='...'
+ENV['database_develop_pass']='...'
 ```
 
 # Funcionalidades de SmartTools

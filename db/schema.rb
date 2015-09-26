@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150916151901) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "competitions", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150916151901) do
     t.integer  "user_id"
   end
 
-  add_index "competitions", ["user_id"], name: "index_competitions_on_user_id"
+  add_index "competitions", ["user_id"], name: "index_competitions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -51,6 +54,6 @@ ActiveRecord::Schema.define(version: 20150916151901) do
     t.datetime "converted_at"
   end
 
-  add_index "videos", ["competition_id"], name: "index_videos_on_competition_id"
+  add_index "videos", ["competition_id"], name: "index_videos_on_competition_id", using: :btree
 
 end
