@@ -28,6 +28,7 @@ gem "bcrypt"
 
 gem 'remotipart', '~> 1.2'
 gem "carrierwave"
+gem 'carrierwave_direct'
 gem "fog-aws"
 gem "will_paginate"
 #gem 'jwplayer-rails'
