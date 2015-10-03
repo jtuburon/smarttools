@@ -21,7 +21,7 @@ module VideosHelper
 		pending_videos.each do |video|
 			# Creating the temporal folder
 			local_video_path = Rails.root.join("public", "uploads", "#{video.class.to_s.underscore}", "#{video.id}", "o_video")
-			# Dir.mkdir(local_video_path) unless File.exists?(local_video_path)
+			Dir.mkdir(local_video_path) unless File.exists?(local_video_path)
 			# Getting the name of the file
 			file_name = File.basename(video.o_video.path, ".*") + ".mp4"
 			# Downloading the file locally
