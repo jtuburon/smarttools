@@ -1,5 +1,6 @@
 require 'fog'
 require 'open-uri'
+require 'fileutils'
 
 module VideosHelper
 	def all_converted_videos_in_competition(competition)
@@ -21,7 +22,7 @@ module VideosHelper
 		pending_videos.each do |video|
 			# Creating the temporal folder
 			local_video_path = Rails.root.join("public", "uploads", "#{video.class.to_s.underscore}", "#{video.id}", "o_video")
-			Dir.mkdir(local_video_path) unless File.exists?(local_video_path)
+			FileUtils.mkdir_p(local_video_path) unless File.exists?(local_video_path)
 			# Getting the name of the file
 			file_name = File.basename(video.o_video.path, ".*") + ".mp4"
 			# Downloading the file locally
@@ -32,7 +33,7 @@ module VideosHelper
 			# Converting the local video
 			movie = FFMPEG::Movie.new(full_path_file)
 			converted_filename = Rails.root.join("public", "uploads", "#{video.class.to_s.underscore}", "#{video.id}", "c_video")
-			Dir.mkdir(converted_filename) unless File.exists?(converted_filename)
+			FileUtils.mkdir_p(converted_filename) unless File.exists?(converted_filename)
 			c_filename= Rails.root.join("public", "uploads", "#{video.class.to_s.underscore}", "#{video.id}", "c_video", file_name)
 			transcoded_movie = movie.transcode(c_filename, "-acodec aac -vcodec libx264 -profile:v high -strict -2")
 			# Saving the changes
@@ -55,6 +56,8 @@ module VideosHelper
 					:body		=> File.open(c_filename),
 					:public		=> true
 				)
+				video.c_video = file.public_url
+				video.save()
 				# Deleting the files
 				File.delete(c_filename)
 				File.delete(full_path_file)
