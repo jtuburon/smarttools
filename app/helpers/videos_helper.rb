@@ -1,14 +1,28 @@
 require 'fog'
 require 'open-uri'
 require 'fileutils'
+require 'aws/ses'
 
 module VideosHelper
 	def all_converted_videos_in_competition(competition)
 		@videos= Video.where(["competition_id = ? and converted_at IS NOT NULL", @competition]).order('created_at DESC').paginate(:page => params[:page], :per_page => 2);
 	end
 
-	def self.convert_pending_videos  
+	def self.send_mail_ses(v)
+		@video = v
+		ses = AWS::SES::Base.new(
+			:access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
+			:secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+		)
+		ses.send_email(
+			:to        => [@video.user_email],
+			:source    => '"SmartTools" <cloudcomputing.g17@gmail.com>',
+			:subject   => 'Video exitosamente convertido',
+			:text_body => 'Tu video ha sido recibido y convertido exitosamente'
+		)
+	end
 
+	def self.convert_pending_videos  
 		# Creating the connection
 		connection = Fog::Storage.new({
 			:provider					=>	'AWS',
@@ -18,7 +32,7 @@ module VideosHelper
 
 		directory = connection.directories.get("smarttools-bucket")
 		pending_videos = Video.where('c_video is NULL');
-
+		
 		pending_videos.each do |video|
 			# Creating the temporal folder
 			local_video_path = Rails.root.join("public", "uploads", "#{video.class.to_s.underscore}", "#{video.id}", "o_video")
@@ -62,7 +76,7 @@ module VideosHelper
 				File.delete(c_filename)
 				File.delete(full_path_file)
 				# Sending the email
-				CustomMailer.converted_video_email(video).deliver
+				send_mail_ses(video)
 			end
 		end
 	end
