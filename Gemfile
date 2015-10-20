@@ -34,6 +34,7 @@ gem "will_paginate"
 #gem 'jwplayer-rails'
 gem 'jwplayer-rails', :git => 'git://github.com/dutgriff/jwplayer-rails.git'
 gem 'aws-ses'
+gem 'aws-sdk', '~> 2'
 
 
 gem 'bootstrap-sass', '~> 3.2.0'

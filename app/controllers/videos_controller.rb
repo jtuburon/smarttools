@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
 	layout "main"
-	include VideosHelper
+	include VideosHelper, SqsHelper
 	protect_from_forgery
   	before_action :set_video, only: [:edit, :update, :destroy]
 
@@ -36,6 +36,8 @@ class VideosController < ApplicationController
 		@video = Video.new(video_params)		
 		if @video.save
 			@competition= Competition.find(@video.competition_id)
+			# Send the video id to the queue
+			send_msg_to_queue(@video.id.to_s)
 			all_converted_videos_in_competition(@video.competition_id)			
 			respond_to do |format|
 				format.js {render "videos/create.js", :locals => {:id => @video.competition_id} }

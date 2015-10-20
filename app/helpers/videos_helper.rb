@@ -2,6 +2,7 @@ require 'fog'
 require 'open-uri'
 require 'fileutils'
 require 'aws/ses'
+include SqsHelper
 
 module VideosHelper
 	def all_converted_videos_in_competition(competition)
@@ -31,9 +32,12 @@ module VideosHelper
 		})
 
 		directory = connection.directories.get("smarttools-bucket")
-		pending_videos = Video.where('c_video is NULL');
+		# Get one element from the queue
+		message_from_queue = obtain_message_from_queue
+		# Searching the video
+		video = Video.where("id is #{message_from_queue}");
 		
-		pending_videos.each do |video|
+		if video.exists?
 			# Creating the temporal folder
 			local_video_path = Rails.root.join("public", "uploads", "#{video.class.to_s.underscore}", "#{video.id}", "o_video")
 			FileUtils.mkdir_p(local_video_path) unless File.exists?(local_video_path)
@@ -77,6 +81,8 @@ module VideosHelper
 				File.delete(full_path_file)
 				# Sending the email
 				send_mail_ses(video)
+				# Deleting the queue file
+				delete_message_from_queue(message_from_queue.body)
 			end
 		end
 	end

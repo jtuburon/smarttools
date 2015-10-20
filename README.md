@@ -22,6 +22,7 @@ ENV['database_develop_port']='...'
 ENV['database_develop_host']='...'
 ENV['database_develop_user']='...'
 ENV['database_develop_pass']='...'
+ENV['queue_url']=''
 ```
 
 # Funcionalidades de SmartTools
