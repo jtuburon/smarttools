@@ -33,11 +33,10 @@ module VideosHelper
 
 		directory = connection.directories.get("smarttools-bucket")
 		# Get one element from the queue
-		message_from_queue = obtain_message_from_queue
+		message_from_queue = obtain_message_from_queue[0]
 		# Searching the video
-		video = Video.where("id is #{message_from_queue}");
-		
-		if video.exists?
+		video = Video.where("id = #{message_from_queue.body}")[0]
+		if video
 			# Creating the temporal folder
 			local_video_path = Rails.root.join("public", "uploads", "#{video.class.to_s.underscore}", "#{video.id}", "o_video")
 			FileUtils.mkdir_p(local_video_path) unless File.exists?(local_video_path)
@@ -82,7 +81,7 @@ module VideosHelper
 				# Sending the email
 				send_mail_ses(video)
 				# Deleting the queue file
-				delete_message_from_queue(message_from_queue.body)
+				delete_message_from_queue(message_from_queue.receipt_handle)
 			end
 		end
 	end
