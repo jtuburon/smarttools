@@ -52,4 +52,11 @@ Rails.application.configure do
   }
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Memcached configuration
+  endpoint    = ENV['cache_cfg_endpoint']
+  elasticache = Dalli::ElastiCache.new(endpoint)
+  # puts elasticache.client
+
+  # config.cache_store = :dalli_store, elasticache.servers, {:expires_in => 1.day, :compress => true}
 end
