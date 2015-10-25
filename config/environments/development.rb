@@ -56,7 +56,6 @@ Rails.application.configure do
   # Memcached configuration
   endpoint    = ENV['cache_cfg_endpoint']
   elasticache = Dalli::ElastiCache.new(endpoint)
-  # puts elasticache.client
 
-  # config.cache_store = :dalli_store, elasticache.servers, {:expires_in => 1.day, :compress => true}
+  config.cache_store = :dalli_store, elasticache.servers, {:expires_in => 1.day, :compress => true}
 end
