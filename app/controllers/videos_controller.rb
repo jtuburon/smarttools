@@ -9,8 +9,9 @@ class VideosController < ApplicationController
 			redirect_to root_path
 		else
 			@video = Video.new
-			@competition= Competition.find(params[:id])
-			@video.competition= @competition
+			print params
+			@competition= Competition.find_by_id(params[:id])
+			@video.competition_id= @competition.id
 			all_videos_in_competition(params[:id])
 		end		
 	end
@@ -21,21 +22,28 @@ class VideosController < ApplicationController
 		else
 			@video = Video.new
 			@competition= Competition.find_by_uri(params[:uri])
-			@video.competition= @competition
+			@video.competition_id= @competition.id
 			all_converted_videos_in_competition(@competition)
 		end		
 	end
 
 	def new
 		@video = Video.new
-		@competition= Competition.find(params[:competition])
-		@video.competition= @competition
+		print params
+		@competition= Competition.find_by_id(params[:competition])
+		@video.competition_id= @competition.id
 	end
 
 	def create
-		@video = Video.new(video_params)		
+		@video = Video.new(video_params)	
+		vid = params[:video][:o_video]
+		@video.o_video  = vid
+
 		if @video.save
-			@competition= Competition.find(@video.competition_id)
+			print "############"
+			print @video.competition_id
+			print "############"
+			@competition= Competition.find_by_id(@video.competition_id)
 			# Send the video id to the queue
 			send_msg_to_queue(@video.id.to_s)
 			all_converted_videos_in_competition(@video.competition_id)			
@@ -62,6 +70,7 @@ class VideosController < ApplicationController
 			end
 	  			
 			def all_videos_in_competition(id)
-	  			@videos= Video.where(competition: id).order('created_at DESC').paginate(:page => params[:page], :per_page => 2)
+	  			@videos= Video.where(competition_id: @competition.id)
+	  			#@videos= Video.where(competition: id).order('created_at DESC').paginate(:page => params[:page], :per_page => 2)
 	  		end		
 end

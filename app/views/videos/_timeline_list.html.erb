@@ -1,6 +1,7 @@
-<% if @videos.empty? %>
+<!--% if @videos.empty? %>
 	<p class="panel-body lead">Todavía no hay videos en este concurso, sé el primero oprimiendo click en Nuevo Video!</p>
 <% else %>
+-->
 	<ul class="timeline">
 		<% @videos.each_with_index do |video, index| %>
 			<% if index%2==0 %>
@@ -24,6 +25,8 @@
 				</div>
 			</li>
 		<% end %>
-		<%= paginate @videos, :params => {:controller => 'videos', :action=>'timeline', :uri=> @competition.uri} %>
+		<!--%= paginate @videos, :params => {:controller => 'videos', :action=>'timeline', :uri=> @competition.uri} %-->
 	</ul>
-<% end %>
+<!--	
+<!--% end %>
+-->
