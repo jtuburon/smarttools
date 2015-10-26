@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new
 		if params[:commit] == 'Iniciar'
-			registered_user = User.find_by(email: params[:user][:email].downcase)
+			registered_user = User.find_by_email(params[:user][:email].downcase)
 			if registered_user && User.authenticate(params[:user][:email], params[:user][:password])
 				session[:user_id] = registered_user.id
 				render :js => "window.location = '/admin/index'"
@@ -26,7 +26,10 @@ class UsersController < ApplicationController
 			end
 		else
 			@user = User.new(user_params)
-			if @user.save
+			print "#/////////////////////////////"
+			print @user.name
+			print "#/////////////////////////////\n"
+			if @user.save	
 				session[:user_id] = @user.id
 				render :js => "window.location = '/admin/index'"
 			else
@@ -43,7 +46,6 @@ class UsersController < ApplicationController
 		@user.destroy
 	end
 
-	private
 	def user_params
 		params.require(:user).permit(:name, :lastname, :email, :password, :password_confirmation)
 	end

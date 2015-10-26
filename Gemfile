@@ -34,14 +34,17 @@ gem "will_paginate"
 #gem 'jwplayer-rails'
 gem 'jwplayer-rails', :git => 'git://github.com/dutgriff/jwplayer-rails.git'
 gem 'aws-ses'
-gem 'aws-sdk', '~> 2'
-
+gem 'aws-sdk', '~> 1.6.9'
+#gem 'aws-sdk', '~> 2'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'whenever', :require => false
 gem 'streamio-ffmpeg'
 gem 'dalli-elasticache'
+gem 'dynamoid'
+
+gem 'carrierwave-dynamoid', :require => 'carrierwave/dynamoid', :git => 'https://github.com/axomi/carrierwave-dynamoid.git'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

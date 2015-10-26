@@ -1,4 +1,6 @@
 class Video < ActiveRecord::Base
+	include Dynamoid::Document
+
 	belongs_to :competition
 	validates :message, presence: true
 	validates :user_name, presence: true

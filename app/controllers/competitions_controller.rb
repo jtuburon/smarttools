@@ -20,11 +20,12 @@ class CompetitionsController < ApplicationController
 		@competition = Competition.new
 	end
 	def create
-		user= current_user;
 		@competition = Competition.new(new_competition_params)
 		@competition.uri = SecureRandom.uuid	
-		@competition.user = user
-
+		@competition.user_id = session[:user_id]
+		print  "/////////////"
+		print @competition.image
+		print  "/////////////"
 		if @competition.save
 			respond_to do |format|
 				format.js { }
@@ -52,7 +53,7 @@ class CompetitionsController < ApplicationController
 			end
 
 			def all_competitions
-	  			@competitions = Competition.where(user: current_user)
+	  			@competitions = Competition.where(user: session[:user_id])
 			end
 
 	def set_competition
