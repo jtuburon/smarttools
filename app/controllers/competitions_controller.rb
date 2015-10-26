@@ -68,7 +68,7 @@ class CompetitionsController < ApplicationController
 		print "/////////////////////"
 		print params[:id]
 		print "/////////////////////\n"
-		@competition = Competition.where(id: params[:id]).all
+		@competition = Competition.find(params[:id])
 
 	end
 end
