@@ -36,9 +36,19 @@ module VideosHelper
 		# Get one element from the queue
 		message_from_queue = obtain_message_from_queue[0]
 		# Searching the video
-		video = Video.where("id = #{message_from_queue.body}")[0]
+		print "&&&&&&&&&&&&&&&&&&&&&&\n"
+		print message_from_queue
+		print "&&&&&&&&&&&&&&&&&&&&&&\n"
+		print message_from_queue.body
+		print "&&&&&&&&&&&&&&&&&&&&&&\n"
+
+		video = Video.find_by_id(message_from_queue.body)
 		if video
 			# Creating the temporal folder
+			print video.user_email
+			print "&&&&&&&&&&&&&&&&&&&&&&\n"
+			print video.o_video
+			print "&&&&&&&&&&&&&&&&&&&&&&\n"
 			local_video_path = Rails.root.join("public", "uploads", "#{video.class.to_s.underscore}", "#{video.id}", "o_video")
 			FileUtils.mkdir_p(local_video_path) unless File.exists?(local_video_path)
 			# Getting the name of the file

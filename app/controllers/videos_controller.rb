@@ -39,6 +39,7 @@ class VideosController < ApplicationController
 		vid = params[:video][:o_video]
 		@video.o_video  = vid
 		@video.status  = 0
+		@video.o_video_s  = vid.original_filename
 
 		if @video.save
 			print "############"
