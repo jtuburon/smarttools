@@ -8,6 +8,8 @@ class CompetitionsController < ApplicationController
 		if !session[:user_id]
 			redirect_to root_path
 		else
+			print session[:user_id]
+			@competitions = Competition.where(user_id: session[:user_id])
 			@competition = Competition.new
 		end
 	end
@@ -20,9 +22,15 @@ class CompetitionsController < ApplicationController
 		@competition = Competition.new
 	end
 	def create
+		print "----------------------"
+		#img = params[:competition][:image].tempfile
+		img = params[:competition][:image]
+		print img
+		print "----------------------"
 		@competition = Competition.new(new_competition_params)
 		@competition.uri = SecureRandom.uuid	
 		@competition.user_id = session[:user_id]
+		@competition.image  = img
 		print  "/////////////"
 		print @competition.image
 		print  "/////////////"
@@ -53,10 +61,14 @@ class CompetitionsController < ApplicationController
 			end
 
 			def all_competitions
-	  			@competitions = Competition.where(user: session[:user_id])
+	  			@competitions = Competition.where(user_id: session[:user_id])
 			end
 
 	def set_competition
-	  @competition = Competition.find(params[:id])
+		print "/////////////////////"
+		print params[:id]
+		print "/////////////////////\n"
+		@competition = Competition.where(id: params[:id]).all
+
 	end
 end

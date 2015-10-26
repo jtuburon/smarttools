@@ -1,4 +1,4 @@
-class Video < ActiveRecord::Base
+class Video
 	include Dynamoid::Document
 
 	belongs_to :competition

@@ -16,6 +16,7 @@ Dynamoid.configure do |config|
     config.partition_size = 200  # Determine the key space size that writes are randomly spread across.
     config.read_capacity = 100 # Read capacity for your tables
     config.write_capacity = 20 # Write capacity for your tables
+    config.partitioning = false
 end
 
 # Dynamoid.configure do |config|

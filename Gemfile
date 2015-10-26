@@ -45,7 +45,7 @@ gem 'dalli-elasticache'
 gem 'dynamoid'
 
 gem 'carrierwave-dynamoid', :require => 'carrierwave/dynamoid', :git => 'https://github.com/axomi/carrierwave-dynamoid.git'
-
+gem 'dynamoid-paperclip'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

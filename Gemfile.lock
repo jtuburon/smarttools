@@ -83,6 +83,10 @@ GEM
       fog
       uuidtools
     chronic (0.10.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -98,6 +102,9 @@ GEM
       activemodel
       aws-sdk
       tzinfo
+    dynamoid-paperclip (0.0.1)
+      dynamoid
+      paperclip (~> 3.0)
     erubis (2.7.0)
     excon (0.45.4)
     execjs (2.6.0)
@@ -233,6 +240,11 @@ GEM
     net-ssh (3.0.1)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    paperclip (3.5.4)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.18.3)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -321,6 +333,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   dalli-elasticache
   dynamoid
+  dynamoid-paperclip
   fog-aws
   jbuilder (~> 2.0)
   jquery-rails

@@ -3,7 +3,11 @@ class AdminController < ApplicationController
 		if !session[:user_id]
 			redirect_to root_path
 		else
+			print session[:user_id]
+
 			@competitions = Competition.where(user_id: session[:user_id])
+			
+			print @competitions
 			@competition = Competition.new		
 		end
 	end
