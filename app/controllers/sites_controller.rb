@@ -2,6 +2,7 @@ class SitesController < ApplicationController
 	include VideosHelper
 	def index
 		#@competition = Competition.where(uri: params[:uri])
+		print 
 		@competition = Competition.find_by_uri(params[:uri])
 		print @competition
 		if @competition	!= nil			

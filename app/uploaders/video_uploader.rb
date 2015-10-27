@@ -7,8 +7,8 @@ class VideoUploader < CarrierWave::Uploader::Base
 	# include CarrierWave::MiniMagick
 
 	# Choose what kind of storage to use for this uploader:
-	storage :file
-	#storage :fog
+	#storage :file
+	storage :fog
 
 	include CarrierWave::MimeTypes
 	process :set_content_type
@@ -17,6 +17,18 @@ class VideoUploader < CarrierWave::Uploader::Base
 	# This is a sensible default for uploaders that are meant to be mounted:
 	def store_dir
 		"uploads/#{model.class.to_s.underscore}/#{model.id}/#{mounted_as}"
+	end
+
+	def filename
+		"#{model.o_video_s}"
+	end	
+
+	def path
+		"https://s3.amazonaws.com/smarttools-bucket/#{store_dir()}/#{filename()}" 
+	end
+
+	def url
+		 URI.encode("#{path()}") 
 	end
 
 	# Provide a default URL as a default if there hasn't been a file uploaded:

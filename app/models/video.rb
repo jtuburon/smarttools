@@ -7,6 +7,7 @@ class Video
 	field :user_name, :string
 	field :user_lastname, :string 
 	field :o_video, :string 
+	field :o_video_s, :string
 	field :c_video, :string 
 	field :converted_at, :datetime 
 	field :user_email, :string 

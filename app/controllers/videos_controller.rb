@@ -42,9 +42,6 @@ class VideosController < ApplicationController
 		@video.o_video_s  = vid.original_filename
 
 		if @video.save
-			print "############"
-			print @video.competition_id
-			print "############"
 			@competition= Competition.find_by_id(@video.competition_id)
 			# Send the video id to the queue
 			send_msg_to_queue(@video.id.to_s)

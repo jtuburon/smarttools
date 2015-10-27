@@ -7,8 +7,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 	# include CarrierWave::MiniMagick
 
 	# Choose what kind of storage to use for this uploader:
-	storage :file
-	#storage :fog
+	#storage :file
+	storage :fog
 
 	include CarrierWave::MimeTypes
 	process :set_content_type
@@ -16,7 +16,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 	# Override the directory where uploaded files will be stored.
 	# This is a sensible default for uploaders that are meant to be mounted:
 	def store_dir
-		"/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+		"uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
 	end
 
 	def filename
@@ -24,7 +24,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 	end	
 
 	def path
-		"#{store_dir()}/#{filename()}" 
+		"https://s3.amazonaws.com/smarttools-bucket/#{store_dir()}/#{filename()}" 
 	end
 
 	def url
