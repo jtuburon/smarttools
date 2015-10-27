@@ -8,7 +8,9 @@ class Competition
 	field :end_date, :string 
 	field :uri, :string 
 	field :user_id, :string 
-	field :image, :serialized
+	field :image, :string
+	field :image_s, :string
+
 
 	attr_accessor :image
 

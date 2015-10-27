@@ -25,15 +25,14 @@ class CompetitionsController < ApplicationController
 		print "----------------------"
 		#img = params[:competition][:image].tempfile
 		img = params[:competition][:image]
-		print img
-		print "----------------------"
 		@competition = Competition.new(new_competition_params)
 		@competition.uri = SecureRandom.uuid	
 		@competition.user_id = session[:user_id]
+		print "/////////////////////"
+		print img.original_filename
+		print "/////////////////////\n"
 		@competition.image  = img
-		print  "/////////////"
-		print @competition.image
-		print  "/////////////"
+		@competition.image_s = img.original_filename
 		if @competition.save
 			respond_to do |format|
 				format.js { }
