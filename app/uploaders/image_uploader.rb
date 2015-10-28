@@ -24,11 +24,11 @@ class ImageUploader < CarrierWave::Uploader::Base
 	end	
 
 	def path
-		"https://s3.amazonaws.com/smarttools-bucket/#{store_dir()}/#{filename()}" 
+		"http://d28ipe8be7lpyg.cloudfront.net/#{store_dir()}/#{filename()}" 
 	end
 
 	def url
-		"#{path()}" 
+		URI.encode("#{path()}")
 	end
 
 	# Provide a default URL as a default if there hasn't been a file uploaded:

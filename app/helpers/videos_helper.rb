@@ -62,7 +62,7 @@ module VideosHelper
 				# Saving the changes
 				converted_path = "/uploads/#{video.class.to_s.underscore}/#{video.id}/c_video"
 				c_video = converted_path + "/" + file_name
-				video.c_video = c_video
+				video.c_video = "http://d28ipe8be7lpyg.cloudfront.net#{c_video}"
 				video.converted_at = DateTime.now
 				video.status = 1
 				video.save(:validate => false)
@@ -80,8 +80,6 @@ module VideosHelper
 						:body		=> File.open(c_filename),
 						:public		=> true
 					)
-					video.c_video = file.public_url
-					video.save(:validate => false)
 					# Deleting the files
 					File.delete(c_filename)
 					File.delete(full_path_file)

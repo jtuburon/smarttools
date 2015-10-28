@@ -35,6 +35,8 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
+  #config.action_controller.asset_host = 'd28ipe8be7lpyg.cloudfront.net'
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.
@@ -86,6 +88,12 @@ Rails.application.configure do
    :user_name            => ENV['gmail_username'],
    :password             => ENV['gmail_password'],
    :authentication       => "plain",
-  :enable_starttls_auto => true
+   :enable_starttls_auto => true
   }
+
+  # Memcached configuration
+  endpoint    = ENV['cache_cfg_endpoint']
+  elasticache = Dalli::ElastiCache.new(endpoint)
+
+  config.cache_store = :dalli_store, elasticache.servers, {:expires_in => 1.day, :compress => true}
 end
