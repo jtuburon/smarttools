@@ -22,6 +22,8 @@ module Smarttools
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 'Bogota'
+    config.serve_static_assets = true
+    
     #config.active_record.default_timezone = 'Bogota'
 
     #config.assets.initialize_on_precompile = false
