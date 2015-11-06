@@ -41,7 +41,9 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'whenever', :require => false
 gem 'streamio-ffmpeg'
-gem 'dalli-elasticache'
+#gem 'dalli-elasticache'
+gem 'iron_cache_rails'
+
 gem 'dynamoid'
 
 gem 'carrierwave-dynamoid', :require => 'carrierwave/dynamoid', :git => 'https://github.com/axomi/carrierwave-dynamoid.git'
