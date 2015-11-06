@@ -42,7 +42,7 @@ gem 'autoprefixer-rails'
 gem 'whenever', :require => false
 gem 'streamio-ffmpeg'
 #gem 'dalli-elasticache'
-gem 'iron_cache_rails'
+gem 'iron_cache_rails', :git =>  'git://github.com/iron-io/iron_cache_rails.git'
 
 gem 'dynamoid'
 

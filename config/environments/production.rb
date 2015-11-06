@@ -81,6 +81,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   
+=begin
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
    :address              => "smtp.gmail.com",
@@ -90,10 +91,13 @@ Rails.application.configure do
    :authentication       => "plain",
    :enable_starttls_auto => true
   }
-
+=end
+=begin
   # Memcached configuration
   endpoint    = ENV['cache_cfg_endpoint']
   elasticache = Dalli::ElastiCache.new(endpoint)
 
   config.cache_store = :dalli_store, elasticache.servers, {:expires_in => 1.day, :compress => true}
+=end
+    
 end

@@ -84,7 +84,8 @@ module VideosHelper
 					File.delete(c_filename)
 					File.delete(full_path_file)
 					# Sending the email
-					send_mail_ses(video)
+					#send_mail_ses(video)
+					CustomMailer.converted_video_email(video).deliver
 					# Deleting the queue file
 					delete_message_from_queue(message_from_queue.receipt_handle)
 				end

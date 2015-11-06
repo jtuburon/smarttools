@@ -6,6 +6,13 @@ GIT
       railties (>= 3.1.1)
 
 GIT
+  remote: git://github.com/iron-io/iron_cache_rails.git
+  revision: ddbb3610be67e6a7f10d0c7c0b190c1b960c97c9
+  specs:
+    iron_cache_rails (0.1.6)
+      iron_cache (>= 1)
+
+GIT
   remote: https://github.com/axomi/carrierwave-dynamoid.git
   revision: d4548b4b6b78a6e2654472f820769614e5f6aa95
   specs:
@@ -94,9 +101,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
-    dalli (2.7.4)
-    dalli-elasticache (0.1.2)
-      dalli (>= 1.0.0)
     debug_inspector (0.0.2)
     dynamoid (0.7.1)
       activemodel
@@ -218,6 +222,10 @@ GEM
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
+    iron_cache (1.4.2)
+      iron_core (>= 0.5.1)
+    iron_core (1.0.9)
+      rest (>= 3.0.4)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -235,9 +243,11 @@ GEM
     minitest (5.8.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
+    net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
+    netrc (0.11.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     paperclip (3.5.4)
@@ -276,6 +286,9 @@ GEM
     rdoc (4.2.0)
       json (~> 1.4)
     remotipart (1.2.1)
+    rest (3.0.6)
+      net-http-persistent (>= 2.9.1)
+      netrc
     sass (3.4.18)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -329,10 +342,10 @@ DEPENDENCIES
   carrierwave-dynamoid!
   carrierwave_direct
   coffee-rails (~> 4.1.0)
-  dalli-elasticache
   dynamoid
   dynamoid-paperclip
   fog-aws
+  iron_cache_rails!
   jbuilder (~> 2.0)
   jquery-rails
   jwplayer-rails!
