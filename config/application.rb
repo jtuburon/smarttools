@@ -24,7 +24,7 @@ module Smarttools
     config.time_zone = 'Bogota'
     #config.active_record.default_timezone = 'Bogota'
 
-    config.assets.initialize_on_precompile = false
+    #config.assets.initialize_on_precompile = false
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
