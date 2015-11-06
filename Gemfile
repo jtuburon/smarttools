@@ -48,6 +48,9 @@ gem 'dynamoid'
 
 gem 'carrierwave-dynamoid', :require => 'carrierwave/dynamoid', :git => 'https://github.com/axomi/carrierwave-dynamoid.git'
 gem 'dynamoid-paperclip'
+
+gem 'puma'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
