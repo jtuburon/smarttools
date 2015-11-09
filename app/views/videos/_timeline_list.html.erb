@@ -20,7 +20,7 @@
 						<p><%= video.user_name+ " " +  video.user_lastname%></p>
 						<br/> 
 						
-						<%= jwplayer({id: video.id, width: 450, height: 350, file: video.c_video, primary: "flash"}) %>
+						<%= jwplayer({id: video.id, width: 450, height: 350, file: video.c_video, primary: "flash", flashplayer: asset_path('flash.swf')}) %>
 					</div>
 				</div>
 			</li>
