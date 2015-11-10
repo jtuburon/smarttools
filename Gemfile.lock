@@ -13,6 +13,12 @@ GIT
       iron_cache (>= 1)
 
 GIT
+  remote: git://github.com/jamiequint/hirefire-resource.git
+  revision: e64d68c464dc38a6357db1f822ea3196ee4a32bc
+  specs:
+    hirefire-resource (0.3.7)
+
+GIT
   remote: https://github.com/axomi/carrierwave-dynamoid.git
   revision: d4548b4b6b78a6e2654472f820769614e5f6aa95
   specs:
@@ -347,6 +353,7 @@ DEPENDENCIES
   dynamoid
   dynamoid-paperclip
   fog-aws
+  hirefire-resource!
   iron_cache_rails!
   jbuilder (~> 2.0)
   jquery-rails
