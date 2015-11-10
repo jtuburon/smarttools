@@ -49,7 +49,7 @@ gem 'dynamoid'
 gem 'carrierwave-dynamoid', :require => 'carrierwave/dynamoid', :git => 'https://github.com/axomi/carrierwave-dynamoid.git'
 gem 'dynamoid-paperclip'
 gem 'rufus-scheduler'
-gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
 
 #gem 'puma'
 # Use ActiveModel has_secure_password
