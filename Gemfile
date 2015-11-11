@@ -50,7 +50,7 @@ gem 'carrierwave-dynamoid', :require => 'carrierwave/dynamoid', :git => 'https:/
 gem 'dynamoid-paperclip'
 gem 'rufus-scheduler'
 gem 'newrelic_rpm'
-gem "hirefire-resource", github: "jamiequint/hirefire-resource"
+gem "hirefire-resource", github: "jtuburon/hirefire-resource"
 
 #gem 'puma'
 # Use ActiveModel has_secure_password

@@ -13,8 +13,8 @@ GIT
       iron_cache (>= 1)
 
 GIT
-  remote: git://github.com/jamiequint/hirefire-resource.git
-  revision: e64d68c464dc38a6357db1f822ea3196ee4a32bc
+  remote: git://github.com/jtuburon/hirefire-resource.git
+  revision: 5a0f463613c8801fc6d0e11b790269b59a2af6a3
   specs:
     hirefire-resource (0.3.7)
 
